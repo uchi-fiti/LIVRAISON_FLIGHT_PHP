@@ -1,9 +1,11 @@
 <?php
 
 use app\controllers\ApiExampleController;
+use app\controllers\UpdateController;
 use app\middlewares\SecurityHeadersMiddleware;
 use flight\Engine;
 use flight\net\Router;
+use app\controllers\LivraisonController;
 
 /** 
  * @var Router $router 
@@ -17,14 +19,14 @@ $router->group('', function(Router $router) use ($app) {
 	// 	$controller = new ApiExampleController($app);
 	// 	$app->render('welcome', [ 'products' => $controller->getProducts()]);
 	// });
-	$router->get('/', [ ApiExampleController::class, 'getProducts' ]);
-	$router->get('/delete/@id:[0-9]+', [ ApiExampleController::class, 'delete' ]);
-	$router->get('/redirectupdate/@id:[0-9]+', [ ApiExampleController::class, 'r_update' ]);
-	$router->get('/hello-world/@name', function($name) {
-		echo '<h1>Hello world! Oh hey '.$name.'!</h1>';
-	});
 	
-	$router->get('/produit/@id:[0-9]', [ ApiExampleController::class, 'getProduct' ]);
+	// $router->get('/delete/@id:[0-9]+', [ ApiExampleController::class, 'delete' ]);
+	// $router->get('/redirectupdate/@id:[0-9]+', [ ApiExampleController::class, 'r_update' ]);
+	// $router->get('/hello-world/@name', function($name) {
+	// 	echo '<h1>Hello world! Oh hey '.$name.'!</h1>';
+	// });
+	
+	// $router->get('/produit/@id:[0-9]', [ ApiExampleController::class, 'getProduct' ]);
 	
 	// $router->post('/addhandler', function() use ($app) {
 	// 	$req = Flight::request();
@@ -50,5 +52,27 @@ $router->group('', function(Router $router) use ($app) {
 	});
 
 	
+	//Aza rarahina ny ambony ao lol 
+	$livraison_controller = new LivraisonController($app);
+	$router->get('/', [ $livraison_controller, 'loadHome' ]);
+
+	$router->get('/modif/@id', function($id) use ($app) {
+		$livraison_controller = new LivraisonController($app);
+		
+		// $produit = ['id' => 0,'nom' => 'Not found','src' => '1.jpg','price' => '0'];
+
+		if (!empty($id)) {
+			if (is_numeric($id)) {
+				$int = intval($id);
+				$found = $livraison_controller->findLivraisonById($int);
+				$selects = $livraison_controller->getStateChoices();
+				$app->render('livraison', [ 'livraison' => $found , 'choix' => $selects]);
+
+			}
+		}
+		
+	});
+	$update_controller = new UpdateController();
+	$router->get('/traiteModif', [ $update_controller, 'UploadState' ]);
 
 }, [ SecurityHeadersMiddleware::class ]);
