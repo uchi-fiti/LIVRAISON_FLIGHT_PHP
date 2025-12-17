@@ -5,6 +5,7 @@
     - table livraison: id int, id_coli int, id_entrepot_depart int, adr_destination varchar(100), id_etat int, masse float [ok]
     - table entrepot: id int, adr_entrepot varchar(100) [ok]
     - table etat_livraison [ok]
+    - table chauffeur: id int, nom varchar(100)
   - insertion des donnees de test [ok]
 - page
   - listes des livraisons_coli [noah]
@@ -17,7 +18,8 @@
     - entrepot depart: dropdown
     - adr_destination: input text
     - etat: automatiquement en attente a la creation
-    - voiture
+    - voiture: input text
+    - chauffeur: dropdown
     - salaire_chauffeur
     - date_livraison (arrivee au destinataire)
     - masse: automatiquement calcule de la somme des masses des produits

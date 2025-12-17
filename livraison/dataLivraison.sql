@@ -11,7 +11,11 @@ create table Livraison_coli (
     id int primary key auto_increment,
     id_entrepot_depart int,
     adr_destination varchar(100),   
-    id_etat int
+    id_etat int default 1, 
+    voiture varchar(20),
+    id_chauffeur int,
+    salaire_chauffeur float,
+    date_livraison datetime
 );
 create table Produits_coli (
     id int primary key auto_increment,
@@ -30,6 +34,10 @@ create table Etat_livraison (
 insert into Etat_livraison (desc_etat) values 
 ("en attente"), ("livre"), ("annule");
 
+create table Chauffeur (
+    id int primary key auto_increment,
+    nom varchar(50)
+);
 
 -- Insertion des entrepôts
 INSERT INTO Entrepot (adr_entrepot) VALUES 
