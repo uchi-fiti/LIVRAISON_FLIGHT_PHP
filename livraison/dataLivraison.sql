@@ -5,6 +5,7 @@ create table Produit (
     id int primary key auto_increment,
     nom varchar(100),
     prix float,
+    img varchar(100),
     masse float
 );
 create table Livraison_coli (

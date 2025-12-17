@@ -29,7 +29,7 @@
     - affichage de tous les produits
     - avec les autres details (entrepot, adr_destination, etat)
 - fonctions:
-  - getAllProducts
+  - getAllProducts [fitiavana]
   - getAllLivraison [noah]
   - saveLivraison [fitiavana]
   - modifyLivraison [noah]
