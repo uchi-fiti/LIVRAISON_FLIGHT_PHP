@@ -44,6 +44,10 @@ $router->group('', function(Router $router) use ($app) {
 		$app->render('add');
 	});
 
+	// $router->get(BASE_URL, function(){
+	// 	echo "We've arrived at the base url of value: " . BASE_URL;
+	// });
+
 	$router->group('/api', function() use ($router) {
 		$router->get('/users', [ ApiExampleController::class, 'getUsers' ]);
 		$router->get('/users/@id:[0-9]', [ ApiExampleController::class, 'getUser' ]);
