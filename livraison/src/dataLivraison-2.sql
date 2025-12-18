@@ -63,6 +63,8 @@ INSERT INTO Livraison_coli (id_entrepot_depart, adr_destination, id_etat) VALUES
 (5, '55 Rue de Rivoli, 75004 Paris', 3);
 
 create or replace view v_livraisons_detail as
-select Livraison_coli.id as id_livraison, adr_entrepot , adr_destination, desc_etat from Livraison_coli
-join Entrepot on Livraison_coli.id_entrepot_depart = Entrepot.id 
-join Etat_livraison on Etat_livraison.id = Livraison_coli.id_etat;
+select l.id as id_livraison, en.adr_entrepot, l.adr_destination, et.desc_etat, l.voiture, c.nom as chauffeur, l.salaire_chauffeur, l.date_livraison
+from Livraison_coli l
+join Entrepot en on l.id_entrepot_depart = en.id 
+join Etat_livraison et on et.id = l.id_etat
+join Chauffeur c on l.id_chauffeur = c.id;
