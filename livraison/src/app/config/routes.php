@@ -1,11 +1,11 @@
 <?php
 
 use app\controllers\ApiExampleController;
+use app\controllers\LivraisonController;
 use app\controllers\UpdateController;
 use app\middlewares\SecurityHeadersMiddleware;
 use flight\Engine;
 use flight\net\Router;
-use app\controllers\LivraisonController;
 
 /** 
  * @var Router $router 

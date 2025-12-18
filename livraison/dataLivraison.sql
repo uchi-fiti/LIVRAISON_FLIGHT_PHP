@@ -5,13 +5,18 @@ create table Produit (
     id int primary key auto_increment,
     nom varchar(100),
     prix float,
+    img varchar(100) default 'default.png',
     masse float
 );
 create table Livraison_coli (
     id int primary key auto_increment,
     id_entrepot_depart int,
     adr_destination varchar(100),   
-    id_etat int
+    id_etat int default 1, 
+    voiture varchar(20),
+    id_chauffeur int,
+    salaire_chauffeur float,
+    date_livraison datetime
 );
 create table Produits_coli (
     id int primary key auto_increment,
@@ -30,6 +35,10 @@ create table Etat_livraison (
 insert into Etat_livraison (desc_etat) values 
 ("en attente"), ("livre"), ("annule");
 
+create table Chauffeur (
+    id int primary key auto_increment,
+    nom varchar(50)
+);
 
 -- Insertion des entrepôts
 INSERT INTO Entrepot (adr_entrepot) VALUES 
@@ -39,15 +48,15 @@ INSERT INTO Entrepot (adr_entrepot) VALUES
 ('321 Rue du Commerce, 31000 Toulouse');
 
 -- Insertion des produits
-INSERT INTO Produit (nom, prix, masse) VALUES 
-('Ordinateur Portable', 899.99, 0.9),
-('Smartphone', 649.99, 0.4),
-('Casque Audio', 149.99, 0.3),
-('Souris Sans Fil', 29.99, 0.2),
-('Clavier Mécanique', 89.99, 0.4),
-('Écran 24"', 199.99, 2.2),
-('Imprimante', 129.99, 5),
-('Tablette', 329.99, 1.3);
+INSERT INTO Produit (nom, prix, masse, img) VALUES 
+('Ordinateur Portable', 899.99, 0.9, 'laptop.jpeg'),
+('Smartphone', 649.99, 0.4, 'smartphone.jpeg'),
+('Casque Audio', 149.99, 0.3, 'headphone.jpeg'),
+('Souris Sans Fil', 29.99, 0.2, 'mouse.jpeg'),
+('Clavier Mécanique', 89.99, 0.4, 'keyboard.jpeg'),
+('Écran 24"', 199.99, 2.2, "monitor.jpeg"),
+('Imprimante', 129.99, 5, "printer.jpeg"),
+('Tablette', 329.99, 1.3, "tablet.jpeg");
 
 -- Insertion des livraisons
 INSERT INTO Livraison_coli (id_entrepot_depart, adr_destination, id_etat) VALUES 

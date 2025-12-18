@@ -1,10 +1,11 @@
 - base [fitiavana]
   - creation et utilisation de la base [ok]
-  - creation des tables necessaires (nom_table: attributs)
+  - creation des tables necessaires (nom_table: attributs) [ok]
     - table produit: id int, String nom, float prix ,(masse) [ok]
     - table livraison: id int, id_coli int, id_entrepot_depart int, adr_destination varchar(100), id_etat int, masse float [ok]
     - table entrepot: id int, adr_entrepot varchar(100) [ok]
     - table etat_livraison [ok]
+    - table chauffeur: id int, nom varchar(100) [ok]
   - insertion des donnees de test [ok]
 - page
   - listes des livraisons_coli [noah]
@@ -12,12 +13,14 @@
     - adr_destination
     - etat
     - nombre de produits dans le coli
-  - creation de livraison [fitiavana]
+  -  [wip] creation de livraison [fitiavana]
     - coli: ajout de +eurs produits
-    - entrepot depart: dropdown
-    - adr_destination: input text
+     -> liste de tous les produits (quantite + ajouter au coli)
+    - entrepot depart: dropdown [wip]
+    - adr_destination: input text [ok]
     - etat: automatiquement en attente a la creation
-    - voiture
+    - voiture: input text
+    - chauffeur: dropdown
     - salaire_chauffeur
     - date_livraison (arrivee au destinataire)
     - masse: automatiquement calcule de la somme des masses des produits
@@ -26,7 +29,10 @@
     - affichage de tous les produits
     - avec les autres details (entrepot, adr_destination, etat)
 - fonctions:
+  - getAllEntrepots
+  - getAllProducts [fitiavana]
   - getAllLivraison [noah]
   - saveLivraison [fitiavana]
   - modifyLivraison [noah]
   - getAllProductsOfIdColi [fitiavana]
+  - getProductById [fitiavana]
