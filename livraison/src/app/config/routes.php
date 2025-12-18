@@ -50,7 +50,8 @@ $router->group('', function(Router $router) use ($app) {
 		$router->post('/users/@id:[0-9]', [ ApiExampleController::class, 'updateUser' ]);
 		
 	});
-
+	$router->get('/ajout_livraison', [ LivraisonController::class, 'passVariables' ]);
+	$router->post('/traitement_livraison', [ LivraisonController::class, 'handleLivraison' ]);
 	
 	//Aza rarahina ny ambony ao lol 
 	$livraison_controller = new LivraisonController($app);

@@ -13,7 +13,7 @@
                 <a href="#" class="logo">E-Varotra</a>
                 <ul class="menu">
                     <li><a href="#">Accueil</a></li>
-                    <li><a href="/add">Add product</a></li>
+                    <li><a href="/ajout_livraison">Add livraison</a></li>
                 </ul>
             </nav>
         </div>
@@ -26,7 +26,6 @@
                 <thead>
                     <tr>
                         <th>Id</th>
-                        <th>Nombre de produits</th>
                         <th>Adresse Entrepot</th>
                         <th>Adresse Destination</th>
                         <th>Etat</th>
@@ -39,7 +38,6 @@
         ?>
             <tr>
                 <td><?= $livraison['id_livraison'];?></td>
-                <td><?= LivraisonDAO::compteColi($livraison['id_livraison']); ?></td>
                 <td><?= $livraison['adr_entrepot'];?></td>
                 <td><?= $livraison['adr_destination'];?></td>
                 <td><?= $livraison['desc_etat'];?></td>
